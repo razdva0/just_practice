@@ -11,7 +11,7 @@ class DataBase(BaseModel):
 
 
 class Settings(BaseSettings):
-    database: DataBase
+    db: DataBase
 
     class Config:
         env_file = ".env"
