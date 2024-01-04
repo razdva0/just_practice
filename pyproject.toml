@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "just-practice"
+version = "0.1.0"
+description = ""
+authors = ["razdva"]
+readme = "README.md"
+packages = [{include = "just_practice"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pydantic-settings = "^2.1.0"
+fastapi = {extras = ["all"], version = "^0.108.0"}
+uvicorn = "^0.25.0"
+sqlalchemy = "^2.0.25"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
