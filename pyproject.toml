@@ -12,6 +12,8 @@ pydantic-settings = "^2.1.0"
 fastapi = {extras = ["all"], version = "^0.108.0"}
 uvicorn = "^0.25.0"
 sqlalchemy = "^2.0.25"
+alembic = "^1.13.1"
+psycopg2 = "^2.9.9"
 
 
 [build-system]
