@@ -2,6 +2,10 @@ from pydantic import BaseModel
 from pydantic_settings import BaseSettings
 
 
+class Main(BaseModel):
+    secret_key: str
+
+
 class DataBase(BaseModel):
     user: str
     password: str
@@ -10,8 +14,15 @@ class DataBase(BaseModel):
     name: str
 
 
+class JWT(BaseModel):
+    algorithm: str
+    access_ttl: int
+
+
 class Settings(BaseSettings):
+    main: Main
     db: DataBase
+    jwt: JWT
 
     class Config:
         env_file = ".env"
