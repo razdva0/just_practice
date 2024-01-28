@@ -15,7 +15,7 @@ async def create(user_in: UserCreate, session: Session = Depends(get_session)):
     user = await crud_user.get(session, email=user_in.email)
     if user is not None:
         raise HTTPException(status_code=409, detail="User already exists")
-    obj_in = UserInDB(**user_in.dict(), hashed_password=get_password_hash(user_in.password))
+    obj_in = UserInDB(**user_in.model_dump(), hashed_password=get_password_hash(user_in.password))
     user = await crud_user.create(session, obj_in)
     return user
 
@@ -50,7 +50,7 @@ async def update(user_id: int, user_in: UserUpdate, session: Session = Depends(g
             session,
             id=user_id,
             obj_in={
-                **user_in.dict(exclude={"password"}, exclude_none=True),
+                **user_in.model_dump(exclude={"password"}, exclude_none=True),
                 "hashed_password": get_password_hash(user_in.password),
             },
         )
